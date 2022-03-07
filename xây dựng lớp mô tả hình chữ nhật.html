@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<canvas id="myCanvas" style="width: 200px;height: 100px;color: red"></canvas>
+<script>
+    let hinhchunhat = function (a,b){
+        this.height = a;
+        this.width =b;
+        this.dientich = function (){
+            return a*b;
+        }
+        this.chuvi = function (){
+            return ((a+b)*2);
+        }
+    }
+
+    // alert(hcn.dientich())
+    function createhcn(){
+        let canvas = document.getElementById("myCanvas");
+        if (canvas.getContext)
+        {
+            let ctx = canvas.getContext('2d');
+            ctx.fillStyle='#00ff00';    // color of fill
+            ctx.fillRect(50, 50, this.width,this.height); // create rectangle
+        }
+    }
+
+    let hcn = new hinhchunhat(2,4)
+    let a
+    hcn.dientich()
+    hcn.chuvi()
+</script>
+</body>
+</html>
