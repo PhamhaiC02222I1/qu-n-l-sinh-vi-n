@@ -1,38 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>[Bài tập] Xây dựng lớp mô tả hình chữ nhật</title>
 </head>
+
 <body>
-<canvas id="myCanvas" style="width: 200px;height: 100px;color: red"></canvas>
+<canvas id="myCanvas" width="1368px" height="400px" style="border:1px solid #d3d3d3;"></canvas>
+<p id="result"></p>
 <script>
-    let hinhchunhat = function (a,b){
-        this.height = a;
-        this.width =b;
-        this.dientich = function (){
-            return a*b;
+    let res = document.getElementById('result');
+    class Rect {
+
+
+        constructor(width,height) {
+            this.width = width;
+            this.height = height;
         }
-        this.chuvi = function (){
-            return ((a+b)*2);
+        circum(){
+            return 2 * (this.width + this.height)
+        }
+        area(){
+            return this.width * this.height
         }
     }
 
-    // alert(hcn.dientich())
-    function createhcn(){
+    Rect.prototype.display = function () {
         let canvas = document.getElementById("myCanvas");
-        if (canvas.getContext)
-        {
-            let ctx = canvas.getContext('2d');
-            ctx.fillStyle='#00ff00';    // color of fill
-            ctx.fillRect(50, 50, this.width,this.height); // create rectangle
-        }
+        let context = canvas.getContext("2d");
+        context.rect(20, 20, this.width, this.height);
+        context.stroke();
+        res.innerHTML = `width = ${this.width}, height = ${this.height}`
     }
-
-    let hcn = new hinhchunhat(2,4)
-    let a
-    hcn.dientich()
-    hcn.chuvi()
+    function createRec() {
+        let rec = new Rect(100,130);
+        rec.display();
+    }
+    createRec();
 </script>
 </body>
+
 </html>
